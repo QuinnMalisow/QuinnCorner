@@ -1,0 +1,47 @@
+The code used in R:
+
+#Link to load in my data below
+myDF <- read.csv("/class/datamine/data/8451/The_Complete_Journey_2_Master/5000_transactions.csv")
+
+#This table shows the number of transactions that occur in the four stores
+table(myDF$STORE_R)
+
+
+#Loading the data on yellow taxi cabs in New York City
+myDF <- read.csv("/class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv")
+
+#This shows how many passengers altogether rode taxis in June 2019
+sum(myDF$passenger_count)
+
+#We load the ggmap library
+library("ggmap")
+
+#This loads the data for all USA airports
+myDF <- read.csv("http://stat-computing.org/dataexpo/2009/airports.csv")
+
+#This loads the dataframe of longitudes and latitudes
+mypoints <- data.frame(lon=myDF$longitude,lat=myDf$latitude)
+
+#Using Dr. Wards key so we can access maps in google
+register_google(key = "AIzaSyDYnLiu1jyxvo4hYqZJqqyZM7kx2fCpU1s", write = TRUE)
+
+#Making a center using google
+omaha_center = as.numeric(geocode("Omaha"))
+#Then we build the map
+AmericaMap <- ggmap(get_googlemap(center=omaha_center,zoom = 5))
+#Finally we add the points to the map
+AmericaMap <- AmericaMap + geom_point(data=mypoints, size=0.1)
+#Now the map is displayed
+
+Outputs:
+1a. Results:
+Central: 2,463,343
+East: 3,263,360
+South: 2,221,500
+West: 2,677,350
+
+2b. Results:
+10,878,820
+
+3a. Results:
+Map of usa with airport locations
