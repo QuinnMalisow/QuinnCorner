@@ -1,0 +1,41 @@
+#Using the read.csv function to import the data into R
+myDF <- read.csv("http://stat-computing.org/dataexpo/2009/airports.csv")
+
+#Using the paste function to put together the columns for city and state
+head(paste(myDF$city, myDF$state))
+
+#Using the table, sort, and tail functions to find the four cities with the most airports
+tail(sort(table(paste(myDF$city, myDF$airport))))
+#Plymouth, Lancaster, Mount Pleasant, Madison, and Greenville have the most airports
+
+#Using the read.csv functionto import the taxi cab data into R
+myDF <- read.csv("/class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv")
+
+#Figuring out how average total fare for taxis
+mean(myDF$fare_amount)
+#The average fare is $13.66
+
+#Figuring out the mean number of total number of passengers
+mean(myDF$passenger_count)
+#The average number of passengers is 1.5673
+
+#Figuring out which pickup location was the most popular in New York
+tail(sort(table(paste(myDF$passenger_count, myDF$PULocationID))))
+#The most popular with 210,906 passengers is zone 237
+#Which corresponds to Manhattan, Upper East Side South
+
+#Loading in the 2020 campaign data
+myDF <- read.delim("/class/datamine/data/election/itcont2020.txt", sep="|")
+
+#The data uses | as a delimiter instead of commas because if commas were used as delimiters, 
+#Last names, first names, and titles would be counted as separate people
+myDF$NAME[9001:9050]
+
+#Pasting together the city and state locations 
+(paste(myDF$CITY, myDF$STATE))
+
+#Figuring out which city has had the most donations so far
+tail(sort(table(paste(myDF$CITY, myDF$TRANSACTION_AMT))))
+#New York has made the most donations so far
+
+#End
