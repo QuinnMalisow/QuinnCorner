@@ -1,0 +1,33 @@
+#Importing in the airbnb data
+myDF <- read.csv("/class/datamine/data/airbnb/united-states/ca/los-angeles/2019-07-08/visualisations/listings.csv")  
+
+#Using a function to figure out which host_id recieved the most reviews
+tail(sort(tapply(myDF$number_of_reviews, myDF$host_id, sum)))
+#The host ID 21013529 has the most reviews with 5055 reviews
+
+#Using a function to figure out which neighborhood recieved the most reviews
+tail(sort(tapply(myDF$number_of_reviews, myDF$neighbourhood, sum)))
+#Venice is the neighborhood with the most reviews with 151,629 reviews
+
+#Importing the data on 2019 airplane flights
+myDF <- read.csv("/class/datamine/data/flights/2019.csv")
+
+#Pasting together origins and destinaitons of each flight and creating a new dataframe
+myDF$myflightpath <- paste(myDF$ORIGIN, myDF$DEST)
+
+#Finding which flight path has the longest departure delay
+tail(sort(tapply(myDF$DEP_DELAY, myDF$myflightpath, mean)))
+
+#Loading in the 2020 election data
+myDF <- read.delim("/class/datamine/data/election/itcont2020.txt", sep="|")
+
+#Pasting city and state together to create a jointed location dataframe
+myDF$location <- paste(myDF$CITY, myDF$STATE)
+
+#Classifying each location to the total amount donated and finding the largest amounts donated
+tail(sort(tapply(myDF$TRANSACTION_AMT, myDF$location, sum)))
+#People from New York City have donated the most money
+     
+#Finding which six comittees have the highest amounts of money donated
+tail(sort(tapply(myDF$TRANSACTION_AMT, myDF$ENTITY_TP, sum)))
+#Individuals have had the highest amounts of donated money so far
