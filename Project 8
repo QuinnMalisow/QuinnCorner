@@ -1,0 +1,31 @@
+# Project 8 Solutions
+
+# Student Name: Quinn Malisow
+
+# Peer Collaborators (if any) and nature of the collaboration none
+# TA help sought (if any) none
+# Online resources used (if any) and weblink for location of resources none
+
+# 1a. (2 pt)
+# Comment about method of solution: Using pipes to figure out where most transactions take place
+cat /class/datamine/data/8451/The_Complete_Journey_2_Master/5000_transactions.csv | cut -d, -f7 | sort | uniq -c | sort -n
+# East 3263360, Central 2463343, South 2221500, West 2677350
+
+# 1b. (2 pt)
+# Comment about method of solution: First use gedit to download in the data, then use pipes to figure out which 4 cities have the most airports
+cat http://stat-computing.org/dataexpo/2009/airports.csv | cut -d, -f7 | head -n4 | sort | uniq -c | sort -n
+# The cities with the most airports are Houston TX, New York NY, Miami FL, Indianapolis IN
+
+# 2a. (2 pts)
+# Comment about method of solution: Figuring out which pickup location is the most popular
+cat /class/datamine/data/taxi/yellow/yellow_tripdata_2019-06 | cut -d, -f8 | sort | uniq -c | sort -n
+# The top result is pickup location 237 with 295037 pickups
+
+# 2b. (2 pts)
+# Comment about method of solution: Finding which city has the most donations in the 2020 election
+cat /class/datamine/data/election/itcont2020.txt | cut -d/| -f9,10 | sort | uniq -c | sort -n
+# New York has the most donations with 77999 donations
+
+# 3a. (2 pt)
+# Comment about method of solution: Input the code in R and use a timer to figure out how fast it takes to run
+# The code takes 2 minutes to run in R compared to the 45 seconds it takes to run in unix
