@@ -1,0 +1,33 @@
+# Project 9 Solutions
+
+# Student Name: Quinn Malisow
+
+# Peer Collaborators (if any) and nature of the collaboration none
+# TA help sought (if any) none
+# Online resources used (if any) and weblink for location of resources none
+
+# 1a. (2 pt)
+# Comment about method of solution: In order to find out how many people rode the taxi in June, we need to add up all of the values in the fourth column (passenger count)
+cat /class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv | awk -F, '{mysum = mysum + $4} END{print mysum}'
+# Output from the solution: 10878820
+
+# 1b. (2 pt)
+# Comment about method of solution: For this solution we take the number of passengers and divide it by the number of rides
+cat /class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv | awk -F, '{mytotal = mytotal + $4; myrides = myrides + 1} END{print mytotal / myrides}'
+# Output from the solution: 1.56732
+
+# 2a. (2 pts)
+# Comment about method of solution: In order to find how much was spent on a certain date, we need to use an if function and add up everything from the 5th column.
+cat /class/datamine/data/8451/The_Complete_Journey_2_Master/5000_transactions.csv | awk -F, '{if($3 == "23-DEC-17") {mysum = mysum + $5}} END{print mysum}'
+# Output from the solution: 108408
+
+# 2b. (2 pts)
+# Comment about method of solution: To find the average amount spent on December 23rd we take the total amount spent on December 23rd and divide it by the number of transactions
+cat /class/datamine/data/8451/The_Complete_Journey_2_Master/5000_transactions.csv | awk -F, '{if($3 == "23-DEC-17") {mytotal = mytotal + $5; mytransaction = mytransaction + 1}} END{print mytotal / mytransaction}'
+# Output from the solution: 4.07045
+
+# 3a. (2 pt)
+# Comment about method of solution: To find the solution we need to add up all the values in column 15 and use the delimiter on \ and |
+cat /class/datamine/data/election/itcont2020.txt | awk -F\| '{mysum = mysum + $15} END{print mysum}'
+#Output from the solution: 893005024
+
